@@ -18,11 +18,9 @@ RUN apt-get install -y libboost-all-dev
 RUN pip install construct==2.5.2 scrypt
 
 #RUN apt-get install -y nvidia-cuda-dev
-WORKDIR /tmp/db-4.8.30
-COPY db-4.8.30 /tmp/
-RUN (cd /tmp/db-4.8.30/build_unix/;../dist/configure --prefix=/usr/local --enable-cxx) && \
-    make;make install && \
-    rm -rf /tmp/db-4.8.30
+COPY db-4.8.30 /tmp/db-4.8.30/
+RUN cd /tmp/db-4.8.30/build_unix;../dist/configure --prefix=/usr/local --enable-cxx;make;make install
+RUN rm -rf /tmp/db-4.8.30
 
 COPY bin/* /usr/local/bin/
 RUN pip install --upgrade pip
