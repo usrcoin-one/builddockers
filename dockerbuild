@@ -1,5 +1,4 @@
-wget http://download.oracle.com/berkeley-db/db-4.8.30.zip
-unzip db-4.8.30.zip;rm db-4.8.30.zip
+[[ ! -d db-4.8.30 ]] && ( wget http://download.oracle.com/berkeley-db/db-4.8.30.zip;unzip db-4.8.30.zip;rm db-4.8.30.zip )
 
 docker build -t usrcoin/newcoin:1.0.0 .
 echo DONE
